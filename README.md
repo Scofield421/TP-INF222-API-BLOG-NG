@@ -1,9 +1,9 @@
 ```md
-# Blog API
+ Blog API
 
 API backend simple de gestion des articles de blog realisee avec Node.js, Express, SQLite, better-sqlite3 et Swagger UI.
 
-## Description
+ Description
 
 Ce projet est une API REST permettant de gerer des articles de blog.  
 Il permet de :
@@ -17,9 +17,8 @@ Il permet de :
 
 Ce projet a ete realise dans le cadre d'un apprentissage du developpement backend avec une architecture claire de type MVC.
 
----
 
-## Technologies utilisees
+ Technologies utilisees
 
 - Node.js
 - Express.js
@@ -30,9 +29,8 @@ Ce projet a ete realise dans le cadre d'un apprentissage du developpement backen
 - cors
 - nodemon
 
----
 
-## Fonctionnalites
+Fonctionnalites
 
 L'API prend en charge les fonctionnalites suivantes :
 
@@ -45,9 +43,8 @@ L'API prend en charge les fonctionnalites suivantes :
 7. Recherche d'articles par texte dans le titre ou le contenu
 8. Documentation interactive avec Swagger
 
----
 
-## Structure du projet
+ Structure du projet
 
 ```bash
 blog-api/
@@ -71,7 +68,7 @@ blog-api/
     └── blog.db
 ```
 
-### Role des principaux fichiers
+Role des principaux fichiers
 
 - `app.js` : point d'entree de l'application
 - `config/db.js` : configuration de la base SQLite
@@ -82,24 +79,23 @@ blog-api/
 - `middlewares/validate.js` : validation des donnees
 - `middlewares/errorHandler.js` : gestion des erreurs serveur
 
----
 
-## Installation du projet
 
-### 1. Cloner le depot
+Installation du projet
+
+1. Cloner le depot
 
 ```bash
 git clone <lien-du-depot>
 cd blog-api
 ```
 
-### 2. Installer les dependances
+ 2. Installer les dependances
 
 ```bash
 npm install
 ```
-
-### 3. Lancer le serveur
+ 3. Lancer le serveur
 
 En mode developpement :
 
@@ -113,9 +109,7 @@ En mode normal :
 npm start
 ```
 
----
-
-## Demarrage attendu
+Demarrage attendu
 
 Si tout fonctionne correctement, le terminal doit afficher un message proche de celui-ci :
 
@@ -125,18 +119,15 @@ Serveur lance sur http://localhost:3000
 Documentation Swagger disponible sur http://localhost:3000/api-docs
 ```
 
----
-
-## Acces a l'application
+Acces a l'application
 
 Une fois le serveur lance, les adresses suivantes sont disponibles :
 
 - API : `http://localhost:3000`
 - Documentation Swagger : `http://localhost:3000/api-docs`
 
----
 
-## Base de donnees
+Base de donnees
 
 La base de donnees utilisee est SQLite.
 
@@ -148,7 +139,7 @@ database/blog.db
 
 La table `articles` est creee automatiquement au demarrage si elle n'existe pas.
 
-### Structure des articles
+ Structure des articles
 
 Chaque article contient les champs suivants :
 
@@ -160,14 +151,12 @@ Chaque article contient les champs suivants :
 - `categorie` : categorie de l'article
 - `tags` : liste de mots-cle stockee sous forme de texte
 
----
+Endpoints disponibles
 
-## Endpoints disponibles
-
-### 1. Creer un article
+ 1. Creer un article
 **POST** `/api/articles`
 
-#### Corps JSON attendu
+ Corps JSON attendu
 
 ```json
 {
@@ -180,46 +169,43 @@ Chaque article contient les champs suivants :
 }
 ```
 
-#### Reponse attendue
+Reponse attendue
 - Code `201` si la creation reussit
 - Code `400` si les donnees sont invalides
 - Code `500` si une erreur serveur survient
 
----
 
-### 2. Recuperer tous les articles
+
+2. Recuperer tous les articles
 **GET** `/api/articles`
 
-#### Reponse attendue
+ Reponse attendue
 - Code `200`
 - Tableau JSON contenant les articles enregistres
 
----
 
-### 3. Filtrer les articles
+
+3. Filtrer les articles
 **GET** `/api/articles?categorie=Backend`  
 **GET** `/api/articles?auteur=Auteur`  
 **GET** `/api/articles?date=2026-03-18`
 
-#### Reponse attendue
+ Reponse attendue
 - Code `200`
 - Tableau JSON des articles correspondants au filtre
 
----
-
-### 4. Recuperer un article par ID
+ 4. Recuperer un article par ID
 **GET** `/api/articles/1`
 
-#### Reponse attendue
+ Reponse attendue
 - Code `200` si l'article existe
 - Code `404` si l'article n'existe pas
 
----
 
-### 5. Mettre a jour un article
+5. Mettre a jour un article
 **PUT** `/api/articles/1`
 
-#### Corps JSON attendu
+Corps JSON attendu
 
 ```json
 {
@@ -232,25 +218,21 @@ Chaque article contient les champs suivants :
 }
 ```
 
-#### Reponse attendue
+Reponse attendue
 - Code `200` si la mise a jour reussit
 - Code `400` si les donnees sont invalides
 - Code `404` si l'article n'existe pas
 - Code `500` si une erreur serveur survient
 
----
-
-### 6. Supprimer un article
+ 6. Supprimer un article
 **DELETE** `/api/articles/1`
 
-#### Reponse attendue
+ Reponse attendue
 - Code `200` si la suppression reussit
 - Code `404` si l'article n'existe pas
 - Code `500` si une erreur serveur survient
 
----
-
-### 7. Rechercher un article
+7. Rechercher un article
 **GET** `/api/articles/search?query=Express`
 
 Cette route permet de rechercher un mot ou une expression dans :
@@ -258,15 +240,13 @@ Cette route permet de rechercher un mot ou une expression dans :
 - le titre
 - le contenu
 
-#### Reponse attendue
+ Reponse attendue
 - Code `200`
 - Tableau JSON des articles trouves
 - Code `400` si le parametre `query` est absent
 - Code `500` si une erreur serveur survient
 
----
-
-## Validation des donnees
+ Validation des donnees
 
 La validation des donnees est assuree avec `express-validator`.
 
@@ -282,9 +262,8 @@ Les regles principales sont les suivantes :
 
 Si les donnees sont invalides, l'API renvoie un code `400 Bad Request`.
 
----
 
-## Codes HTTP utilises
+Codes HTTP utilises
 
 L'API utilise les codes suivants :
 
@@ -294,9 +273,7 @@ L'API utilise les codes suivants :
 - `404 Not Found` : ressource non trouvee
 - `500 Internal Server Error` : erreur interne du serveur
 
----
-
-## Documentation Swagger
+ Documentation Swagger
 
 La documentation interactive de l'API est disponible ici :
 
@@ -311,11 +288,9 @@ Cette interface permet de :
 - tester directement les routes dans le navigateur
 - consulter les formats de requetes et de reponses
 
----
+ Tests rapides avec curl
 
-## Tests rapides avec curl
-
-### Creer un article
+ Creer un article
 
 ```bash
 curl -X POST http://localhost:3000/api/articles \
@@ -329,26 +304,25 @@ curl -X POST http://localhost:3000/api/articles \
   "tags": ["node", "express"]
 }'
 ```
-
-### Recuperer tous les articles
+ Recuperer tous les articles
 
 ```bash
 curl http://localhost:3000/api/articles
 ```
 
-### Recuperer un article par ID
+ Recuperer un article par ID
 
 ```bash
 curl http://localhost:3000/api/articles/1
 ```
 
-### Rechercher un article
+Rechercher un article
 
 ```bash
 curl "http://localhost:3000/api/articles/search?query=article"
 ```
 
-### Mettre a jour un article
+Mettre a jour un article
 
 ```bash
 curl -X PUT http://localhost:3000/api/articles/1 \
@@ -363,24 +337,22 @@ curl -X PUT http://localhost:3000/api/articles/1 \
 }'
 ```
 
-### Supprimer un article
+Supprimer un article
 
 ```bash
 curl -X DELETE http://localhost:3000/api/articles/1
 ```
 
----
+roblemes frequents et solutions
 
-## Problemes frequents et solutions
-
-### 1. Le serveur ne demarre pas
+ 1. Le serveur ne demarre pas
 Verifier que les dependances sont bien installees :
 
 ```bash
 npm install
 ```
 
-### 2. Le port 3000 est deja utilise
+ 2. Le port 3000 est deja utilise
 Arreter les processus Node actifs :
 
 ```bash
@@ -393,7 +365,7 @@ Puis relancer :
 npm run dev
 ```
 
-### 3. Erreur 400
+3. Erreur 400
 Cela signifie souvent que les donnees envoyees sont invalides.
 Verifier :
 - les champs obligatoires
@@ -401,7 +373,7 @@ Verifier :
 - le type de `tags`
 - le parametre `query`
 
-### 4. Erreur 500
+4. Erreur 500
 Cela signifie qu'un probleme interne est survenu.
 Verifier :
 - le terminal
@@ -409,15 +381,14 @@ Verifier :
 - les fichiers du projet
 - la syntaxe du JSON envoye
 
-### 5. JSON invalide
+ 5. JSON invalide
 Verifier qu'il n'y a pas :
 - de virgule apres le dernier champ
 - de texte en trop apres `}`
 - de guillemets simples a la place des guillemets doubles
 
----
 
-## Script disponibles
+Script disponibles
 
 Dans `package.json`, les scripts disponibles sont :
 
@@ -427,8 +398,7 @@ Dans `package.json`, les scripts disponibles sont :
   "dev": "nodemon app.js"
 }
 ```
-
-### Utilisation
+ Utilisation
 
 Lancer normalement :
 ```bash
@@ -440,9 +410,7 @@ Lancer en developpement avec redemarrage automatique :
 npm run dev
 ```
 
----
-
-## Ameliorations possibles
+Ameliorations possibles
 
 Ce projet peut etre ameliore de plusieurs manieres :
 
@@ -452,5 +420,3 @@ Ce projet peut etre ameliore de plusieurs manieres :
 - ajout d'une interface frontend
 - deploiement sur Render ou Railway
 - ajout de tests automatises
-
----
